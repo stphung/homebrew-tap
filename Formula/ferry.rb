@@ -1,10 +1,9 @@
 class Ferry < Formula
   desc "Guarded two-way mirror between a NAS folder and OneDrive"
   homepage "https://github.com/stphung/ferry"
-  url "https://github.com/stphung/ferry/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "a43dc361f246fdd2a7a72ee7d3a7a70ba2da2ae2877691662de807a5f2bc602c"
-  # No license declared: the repo carries no LICENSE file, same as salvage.
-  # Add one there first if this should say MIT.
+  url "https://github.com/stphung/ferry/archive/refs/tags/v0.1.1.tar.gz"
+  sha256 "696979c45205931e777d8aa1378261f7ef6bea0f4646d4a63f074294ab4adc11"
+  license "MIT"
   head "https://github.com/stphung/ferry.git", branch: "main"
 
   # date -v, launchctl, osascript and stty are used freely.

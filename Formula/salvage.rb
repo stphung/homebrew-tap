@@ -1,9 +1,9 @@
 class Salvage < Formula
   desc "If I delete this, what do I lose? Content-based backup coverage check"
   homepage "https://github.com/stphung/salvage"
-  url "https://github.com/stphung/salvage/archive/refs/tags/v1.0.0.tar.gz"
-  sha256 "fe3c442c4c88b162e1ecd14b1152b1e002924f0a3ef385e988a8ffe56ae6d020"
-  # No license declared: the repo carries no LICENSE file, same as ferry.
+  url "https://github.com/stphung/salvage/archive/refs/tags/v1.0.1.tar.gz"
+  sha256 "b14fdda42521323ad763f7169ed8369ebede28d335b998d48d12e0e01d4715ed"
+  license "MIT"
   head "https://github.com/stphung/salvage.git", branch: "main"
 
   # salvage is a front end to rmlint's checksum matching, formatted with jq.
