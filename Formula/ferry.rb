@@ -1,8 +1,8 @@
 class Ferry < Formula
   desc "Guarded two-way mirror between a NAS folder and OneDrive"
   homepage "https://github.com/stphung/ferry"
-  url "https://github.com/stphung/ferry/archive/refs/tags/v0.1.1.tar.gz"
-  sha256 "696979c45205931e777d8aa1378261f7ef6bea0f4646d4a63f074294ab4adc11"
+  url "https://github.com/stphung/ferry/archive/refs/tags/v0.2.0.tar.gz"
+  sha256 "8072932bb2e0ed701c4426435aa6b0f23d478dcded3be7ae9c615d2746fb9294"
   license "MIT"
   head "https://github.com/stphung/ferry.git", branch: "main"
 
@@ -32,6 +32,10 @@ class Ferry < Formula
 
       And to run it on a schedule:
         ferry schedule install
+
+      For a menu bar indicator (SwiftBar is a separate cask — a formula
+      cannot install one, so ferry offers to do it for you):
+        ferry menubar install
     EOS
   end
 
