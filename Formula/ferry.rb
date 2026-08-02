@@ -1,8 +1,8 @@
 class Ferry < Formula
   desc "Guarded two-way mirror between a NAS folder and OneDrive"
   homepage "https://github.com/stphung/ferry"
-  url "https://github.com/stphung/ferry/archive/refs/tags/v0.2.0.tar.gz"
-  sha256 "8072932bb2e0ed701c4426435aa6b0f23d478dcded3be7ae9c615d2746fb9294"
+  url "https://github.com/stphung/ferry/archive/refs/tags/v0.2.1.tar.gz"
+  sha256 "a4f54cd4662653369c72a41bfe4601e880c095ccca2c0528f6cdf27b586effe7"
   license "MIT"
   head "https://github.com/stphung/ferry.git", branch: "main"
 
@@ -36,6 +36,11 @@ class Ferry < Formula
       For a menu bar indicator (SwiftBar is a separate cask — a formula
       cannot install one, so ferry offers to do it for you):
         ferry menubar install
+
+      IMPORTANT when removing ferry: run this FIRST, or the launchd agent
+      and menu bar plugin are left behind. Homebrew cannot do it for you --
+      formulae have no uninstall hook.
+        ferry uninstall
     EOS
   end
 
