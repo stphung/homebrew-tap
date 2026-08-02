@@ -1,8 +1,8 @@
 class Ferry < Formula
   desc "Guarded two-way mirror between a NAS folder and OneDrive"
   homepage "https://github.com/stphung/ferry"
-  url "https://github.com/stphung/ferry/archive/refs/tags/v0.2.1.tar.gz"
-  sha256 "a4f54cd4662653369c72a41bfe4601e880c095ccca2c0528f6cdf27b586effe7"
+  url "https://github.com/stphung/ferry/archive/refs/tags/v0.3.1.tar.gz"
+  sha256 "ca658e4ca9abd1d5fa2f642a2e7c1f45884d26d1de34ca763ee0ed28f5b0df5d"
   license "MIT"
   head "https://github.com/stphung/ferry.git", branch: "main"
 
@@ -15,6 +15,12 @@ class Ferry < Formula
   depends_on "rclone"
 
   def install
+    # Ferry.app is built from source here — every brew user has the CLT, and a
+    # locally built, ad-hoc-signed app has no Gatekeeper friction. The bundle
+    # lands in share/ferry/; `ferry app install` copies it to ~/Applications.
+    # --disable-sandbox is for SwiftPM's own manifest sandbox, which cannot
+    # nest inside Homebrew's; the brew sandbox still confines this build.
+    system "make", "app", "SWIFT_BUILD_FLAGS=--disable-sandbox"
     # The Makefile's layout already matches Homebrew's: bin, share/man/man1,
     # share/zsh/site-functions, share/bash-completion/completions.
     system "make", "install", "PREFIX=#{prefix}"
@@ -33,9 +39,8 @@ class Ferry < Formula
       And to run it on a schedule:
         ferry schedule install
 
-      For a menu bar indicator (SwiftBar is a separate cask — a formula
-      cannot install one, so ferry offers to do it for you):
-        ferry menubar install
+      For the menu bar indicator (a native app, built during this install):
+        ferry app install
 
       IMPORTANT when removing ferry: run this FIRST, or the launchd agent
       and menu bar plugin are left behind. Homebrew cannot do it for you --
@@ -50,6 +55,8 @@ class Ferry < Formula
     assert_match "unknown command", shell_output("#{bin}/ferry nonsense 2>&1", 1)
     # The config parser rejects unknown keys rather than ignoring them; that is
     # what stops a typo silently disarming a safety rail.
+    # The app bundle must have shipped alongside the script.
+    assert_path_exists pkgshare/"Ferry.app/Contents/MacOS/Ferry"
     (testpath/"config").write("NONSENSE=1\n")
     output = shell_output("FERRY_CONFIG=#{testpath}/config #{bin}/ferry status 2>&1", 1)
     assert_match "NONSENSE", output
