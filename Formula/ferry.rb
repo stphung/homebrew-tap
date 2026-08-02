@@ -1,8 +1,8 @@
 class Ferry < Formula
   desc "Guarded two-way mirror between a NAS folder and OneDrive"
   homepage "https://github.com/stphung/ferry"
-  url "https://github.com/stphung/ferry/archive/refs/tags/v0.7.2.tar.gz"
-  sha256 "9114e1da930afe47a36c4b65fc88f24db93755c8ad4e70ec02dec7e5493fca56"
+  url "https://github.com/stphung/ferry/archive/refs/tags/v0.7.3.tar.gz"
+  sha256 "0e051096df2a1c951f2197e34f430c84c5669bdb37a5b2b340a9be695c1aa1a3"
   license "MIT"
   head "https://github.com/stphung/ferry.git", branch: "main"
 
