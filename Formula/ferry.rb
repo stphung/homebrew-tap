@@ -3,16 +3,17 @@ class Ferry < Formula
   homepage "https://github.com/stphung/ferry"
   url "https://github.com/stphung/ferry/archive/refs/tags/v0.1.0.tar.gz"
   sha256 "a43dc361f246fdd2a7a72ee7d3a7a70ba2da2ae2877691662de807a5f2bc602c"
-  license "MIT"
+  # No license declared: the repo carries no LICENSE file, same as salvage.
+  # Add one there first if this should say MIT.
   head "https://github.com/stphung/ferry.git", branch: "main"
+
+  # date -v, launchctl, osascript and stty are used freely.
+  depends_on :macos
 
   # rclone is the whole engine, not an optional extra. Installing it here is
   # the point of the tap: a new Mac needs `brew install stphung/tap/ferry`
   # and nothing else before `ferry setup`.
   depends_on "rclone"
-
-  # date -v, launchctl, osascript and stty are used freely.
-  depends_on :macos
 
   def install
     # The Makefile's layout already matches Homebrew's: bin, share/man/man1,
